@@ -112,8 +112,7 @@ document.addEventListener('DOMContentLoaded', function(){
       myGameArea.changeDirection = old_direction
     }
     if (startY < -16 || startY === (canvas_height + 16) || startX < -16 || startX === (canvas_width + 16)){
-      collision = 1 // when collision occurs it stops, 
-      // alert('You lost');
+      collision = 1 // when collision occurs it stops,
       location.reload();
     }
 

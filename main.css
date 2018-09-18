@@ -3,14 +3,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgb(108, 119, 110);
+  background: rgb(9, 54, 17);
 }
 
-
+.jumbotron {
+justify-content: center;
+background: rgb(70, 203, 42);
+}
 canvas{
   border: solid;
   color: rgb(21, 23, 26);
-  background: rgb(109, 148, 172);
+  background: rgb(20, 22, 20);
 }
 
 #StartBtn{
@@ -20,7 +23,7 @@ canvas{
   width: 300px;
   height: 60px;
 border: solid;
-color: rgb(29, 233, 12);
-background: rgb(209, 64, 63)
+color: rgb(85, 196, 76);
+background: rgb(15, 13, 13)
 
 }
