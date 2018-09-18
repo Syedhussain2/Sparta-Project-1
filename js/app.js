@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
   let old_direction; // i store the old direction it was traveling in
+  let collision = 0 //
 
   function updateGameArea(){
     myGameArea.clear();
@@ -89,23 +90,21 @@ document.addEventListener('DOMContentLoaded', function(){
 
     // conditional statement determined by the latest keyCode value
     //left
-    if (myGameArea.changeDirection === 37 && old_direction !== 39) {
+    if (myGameArea.changeDirection === 37 && old_direction !== 39 && collision === 0) {
       startX = startX - gridsize;
       old_direction = 37
     }
     //right
-    if (myGameArea.changeDirection === 39 && old_direction !== 37) {
+    if (myGameArea.changeDirection === 39 && old_direction !== 37 && collision === 0) {
       startX = startX + gridsize ;
       old_direction = 39
       // console.log(startX);
     }
-    if (myGameArea.changeDirection === 38 && old_direction !== 40) {
-
+    if (myGameArea.changeDirection === 38 && old_direction !== 40 && collision === 0) {
       startY = startY-  gridsize ;
       old_direction = 38
     }
-    if (myGameArea.changeDirection === 40 && old_direction !== 38) {
-
+    if (myGameArea.changeDirection === 40 && old_direction !== 38 && collision === 0) {
       startY = startY + gridsize ;
       old_direction = 40
     }
@@ -113,8 +112,9 @@ document.addEventListener('DOMContentLoaded', function(){
       myGameArea.changeDirection = old_direction
     }
     if (startY < -16 || startY === (canvas_height + 16) || startX < -16 || startX === (canvas_width + 16)){
-      alert('You lost');
-      window.reload();
+      collision = 1 // when collision occurs it stops, 
+      // alert('You lost');
+      location.reload();
     }
 
   }
