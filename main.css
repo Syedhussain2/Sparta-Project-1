@@ -1,0 +1,26 @@
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(108, 119, 110);
+}
+
+
+canvas{
+  border: solid;
+  color: rgb(21, 23, 26);
+  background: rgb(109, 148, 172);
+}
+
+#StartBtn{
+  position:absolute;
+  top: 350px;
+  left: 550px;
+  width: 300px;
+  height: 60px;
+border: solid;
+color: rgb(29, 233, 12);
+background: rgb(209, 64, 63)
+
+}
