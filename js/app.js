@@ -6,26 +6,16 @@ document.addEventListener('DOMContentLoaded', function(){
   // // first step is to create a new function called updateGameArea().
   // // in the myGameArea objectm add an interval which will run the updateGameArea function every 20th millisecond, which is 50times per second.  also add a function called clear() , which will clear the entire canvas.
   // // in the compoent constructor, add a function called update(), to handle the drawing of the component. the updategamearea() function calls the clear and the update method. the result is that the component is drawn and cleared 50times per sec
-  // // CANVAS MAKING
-  //
-  // // const Game = new Object();
-  // //
-  // // Game.canvas = document.getElementById('canvas');
-  // // window.addEventListener('keydown', function(e){
-  // //   console.log(e.keyCode);
-  // // })
-  //
+
   //Global variables
   let gridsize = 16
   let canvas_width = gridsize*32;
   let canvas_height = gridsize*32;
   let difficulty = 1; // 1 = easy, 2 = medium, 3 = hard
   let startButton = document.getElementById('StartBtn');
-
-  // let food = {
-  //   x:Math.round(Math.random()*(canvas_width/snake[0]+1);
-  // }
-
+  let maxlength = 5; // max length of default snake
+  var snakebody = []; // new variable snake array
+  let color = 'rgb(69, 205, 45)'
 
   // functions
   function startGame() {
@@ -56,37 +46,49 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 
-  // adding square on the canvas (snake head)
-  function Snake(width, height, color, x, y) {
-    this.width = width;
-    this.height = height;
-    this.speedY = 0;
-    this.speedX = 0;
-    this.x = x;
-    this.y = y;
-    this.update = function(){
-      context = myGameArea.context;
-      context.fillStyle = color;
-      context.fillRect(this.x, this.y, this.width, this.height);
-    };
+  // // adding square on the canvas (snake head)
+  // function Snake(width, height, color, x, y) {
+  //   this.width = width;
+  //   this.height = height;
+  //   this.speedY = 0;
+  //   this.speedX = 0;
+  //   this.x = x;
+  //   this.y = y;
+  //   this.update = function(){
+  //     context = myGameArea.context;
+  //     context.fillStyle = color;
+  //     context.fillRect(this.x, this.y, this.width, this.height);
+  //   };
+  //   //
+  //   // this.newSnake = function() {
+  //   //   this.x += this.speedX;
+  //   //   this.y += this.speedY;
+  //   // };
+  // }
 
-    this.newSnake = function() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-    };
-  }
+  function draw_snake(){
+    context = myGameArea.context;
+    snakebody.forEach(function(entry) {
+
+    context.fillStyle = color;
+    context.fillRect(entry.x, entry.y,gridsize,gridsize);
+  });
+};
+
 
   let startY = gridsize*16;
   let startX = gridsize*2;
 
 
-  let old_direction; // i store the old direction it was traveling in
-  let collision = 0 //
 
+  let old_direction; // i store the old direction it was traveling in
+  let collision = 0
   function updateGameArea(){
     myGameArea.clear();
-    var myGameSnake = new Snake(gridsize, gridsize, "rgb(69, 205, 45)", startX, startY);
-    myGameSnake.update();
+    // var myGameSnake = new Snake(gridsize, gridsize, "rgb(69, 205, 45)", startX, startY);
+    // var myGameSnake = new Snake(gridsize+4, gridsize+4, "rgb(69, 205, 45)", startX+gridsize, startY+gridsize);
+    // myGameSnake.update();
+    draw_snake();
 
     // conditional statement determined by the latest keyCode value
     //left
@@ -115,6 +117,11 @@ document.addEventListener('DOMContentLoaded', function(){
       collision = 1 // when collision occurs it stops,
       location.reload();
     }
+
+    snakebody.unshift({x:startX, y:startY});
+    if (snakebody.length > maxlength){
+      snakebody.pop();
+    }  // added startX and startY at the start of the array.If the length of the snake goes over the maxlength then pop anything after. making the default snake 5
 
   }
 })
