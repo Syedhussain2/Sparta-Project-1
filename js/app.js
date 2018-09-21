@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function(){
   let maxlength = 5; // max length of default snake
   var snakebody = []; // new variable snake array
   let color = 'rgb(69, 205, 45)'
-  let Score = 0;
   var food = {
     x:gridsize*16,
     y:gridsize*16
@@ -24,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var score;
   var snake_dir_x = gridsize;
   var snake_dir_y = 0;
-  var audio = new Audio('Super_Mario_Bros.-Mushroom_Sound_Effect-yysnM407rjE.mp3');
+  var audio = new Audio('../sound/Super_Mario_Bros.-Mushroom_Sound_Effect-yysnM407rjE.mp3');
   // functions
   function startGame() {
     myGameArea.start();
